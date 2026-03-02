@@ -7,7 +7,7 @@ function ProductsHome() {
       <p className="text-2xl text-gray-500 pb-20 font-serif">
         Piezas esenciales para cada momento
       </p>
-      <Card limit={3} />
+      <Card limit={4} />
     </section>
   );
 }

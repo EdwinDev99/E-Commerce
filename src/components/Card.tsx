@@ -20,15 +20,33 @@ function Card({ limit }: CardProps) {
   const visibleProducts = limit
     ? filteredProducts?.slice(0, limit)
     : filteredProducts;
-
   return (
-    <div>
-      <ul className="flex flex-wrap justify-around ">
+    <div className="p-8 ">
+      <ul className="flex flex-wrap justify-around gap-6">
         {visibleProducts?.map((product) => (
-          <li className="w-2xl  " key={product.id}>
-            <img className="h-90" src={product.image} alt={product.name} />
-            <h2 className="text-white py-5">{product.name}</h2>
-            <p className="text-white py-5">${product.priceCents}</p>
+          <li
+            className="
+            w-72 
+            bg-gray-900 
+            border border-white 
+            rounded-xl 
+            overflow-hidden 
+            transform transition-transform duration-300 
+            hover:scale-105 hover:shadow-2xl
+          "
+            key={product.id}
+          >
+            <img
+              className="h-64 w-full object-cover"
+              src={product.image}
+              alt={product.name}
+            />
+            <div className="p-5 text-center">
+              <h2 className="text-amber-100 font-semibold text-lg">
+                {product.name}
+              </h2>
+              <p className="text-white font-bold mt-2">${product.priceCents}</p>
+            </div>
           </li>
         ))}
       </ul>
