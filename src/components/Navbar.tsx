@@ -4,7 +4,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 function Navbar() {
   return (
     <>
-      <nav className="bg-black text-white h-24 flex items-center justify-between px-6">
+      <nav className="bg-black text-white h-24 flex items-center justify-between px-6 fixed w-full z-50">
         <ul className="flex gap-10" role="menubar">
           <li>
             <NavLink
