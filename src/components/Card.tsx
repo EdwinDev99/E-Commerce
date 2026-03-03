@@ -1,4 +1,6 @@
 import useProducts from "../hooks/useProducts";
+import type { ProductType } from "../types/ProductType";
+import { useNavigate } from "react-router-dom";
 
 type CardProps = {
   limit?: number;
@@ -6,6 +8,7 @@ type CardProps = {
 
 function Card({ limit }: CardProps) {
   const { data, error, isLoading } = useProducts();
+  const navigate = useNavigate();
 
   if (error instanceof Error) {
     return <h2>{error.message} :(</h2>;
@@ -20,11 +23,17 @@ function Card({ limit }: CardProps) {
   const visibleProducts = limit
     ? filteredProducts?.slice(0, limit)
     : filteredProducts;
+
+  const goToProductsDetails = (product: ProductType) => {
+    navigate(`/products/${product.id}`);
+  };
+
   return (
-    <div className="p-8 ">
+    <div className="p-8">
       <ul className="flex flex-wrap justify-around gap-6">
         {visibleProducts?.map((product) => (
           <li
+            onClick={() => goToProductsDetails(product)}
             className="
             w-72 
             bg-gray-900 
